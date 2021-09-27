@@ -17,5 +17,4 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
         env:
-          HD_RANDOM_DATA: "Hello"
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          HD_DATABASE_URL: ${{ secrets.HEROKU_DATABASE_URL }}
