@@ -28,8 +28,14 @@ namespace controle_de_financas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            {
+                var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+                var defaultCon = Configuration.GetConnectionString("DefaultConnection");
+
+                options.UseMySql(connUrl, ServerVersion.Parse("5.5.62"));
+
+            });
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
