@@ -2,6 +2,9 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "environmentVariables": {
+      "ASPNETCORE_ENVIRONMENT": "Production"
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:11107",
       "sslPort": 44315
