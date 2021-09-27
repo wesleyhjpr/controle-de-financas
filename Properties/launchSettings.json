@@ -2,9 +2,6 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "environmentVariables": {
-      "ASPNETCORE_ENVIRONMENT": "Production"
-    },
     "iisExpress": {
       "applicationUrl": "http://localhost:11107",
       "sslPort": 44315
@@ -30,9 +27,6 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
-      },
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true,
       "useSSL": true

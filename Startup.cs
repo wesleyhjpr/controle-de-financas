@@ -1,27 +1,25 @@
 using controle_de_financas.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
 namespace controle_de_financas
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            CurrentEnvironment = env;
         }
 
+        private IHostingEnvironment CurrentEnvironment { get; set; }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -30,8 +28,9 @@ namespace controle_de_financas
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-                Console.WriteLine("qual eh o ambiente ???   " + Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
                 var defaultCon = Configuration.GetConnectionString("DefaultConnection");
+
+                Console.WriteLine("qual é   " + CurrentEnvironment.EnvironmentName);
 
                 options.UseMySql(connUrl, ServerVersion.Parse("5.5.62"));
                 //options.UseSqlServer(defaultCon);
