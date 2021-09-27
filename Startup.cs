@@ -30,7 +30,7 @@ namespace controle_de_financas
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-                Console.WriteLine(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+                Console.WriteLine("qual eh o ambiente ???   " + Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
                 var defaultCon = Configuration.GetConnectionString("DefaultConnection");
 
                 options.UseMySql(connUrl, ServerVersion.Parse("5.5.62"));
